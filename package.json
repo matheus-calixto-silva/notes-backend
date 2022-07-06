@@ -1,0 +1,19 @@
+{
+  "name": "notes-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts" : {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "commit": "git-cz"
+  },
+  "repository": "https://github.com/matheus-calixto-silva/notes-backend.git",
+  "author": "Matheus Calixto <matheuscalixto8@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "husky": "^8.0.1"
+  }
+}
