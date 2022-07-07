@@ -1,4 +1,7 @@
 {
+    "globals": {
+        "process": true
+    },
     "env": {
         "browser": true,
         "commonjs": true,
@@ -8,6 +11,5 @@
     "parserOptions": {
         "ecmaVersion": "latest"
     },
-    "rules": {
-    }
+    "rules": {}
 }
