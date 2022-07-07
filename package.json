@@ -7,7 +7,11 @@
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "build:ui": "rm -rf build && cd ../notes-frontend && yarn build && cp -r dist ../notes-backend && cd ../notes-backend && mv dist build",
+    "deploy": "git push heroku main",
+    "deploy:full": "yarn build:ui && git add . && git commit -m feat: uibuild && yarn deploy",
+    "logs:prod": "heroku logs --tail"
   },
   "repository": "https://github.com/matheus-calixto-silva/notes-backend.git",
   "author": "Matheus Calixto <matheuscalixto8@gmail.com>",
