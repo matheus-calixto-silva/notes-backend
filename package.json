@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "prepare": "husky install",
     "commit": "git-cz",
     "build:ui": "rm -rf build && cd ../notes-frontend && yarn build && cp -r dist ../notes-backend && cd ../notes-backend && mv dist build",
@@ -12,7 +12,7 @@
     "deploy:full": "yarn build:ui && git add . && git commit -m feat: uibuild && yarn deploy",
     "logs:prod": "heroku logs --tail",
     "lint": "eslint .",
-    "test": "NODE_ENV=test jest --verbose --runInBand"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
   },
   "repository": "https://github.com/matheus-calixto-silva/notes-backend.git",
   "author": "Matheus Calixto <matheuscalixto8@gmail.com>",
