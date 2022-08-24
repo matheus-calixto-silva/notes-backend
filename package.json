@@ -5,13 +5,14 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
     "commit": "git-cz",
     "build:ui": "rm -rf build && cd ../notes-frontend && yarn build && cp -r dist ../notes-backend && cd ../notes-backend && mv dist build",
     "deploy": "git push heroku main",
     "deploy:full": "yarn build:ui && git add . && git commit -m feat: uibuild && yarn deploy",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint .",
+    "test": "jest --verbose"
   },
   "repository": "https://github.com/matheus-calixto-silva/notes-backend.git",
   "author": "Matheus Calixto <matheuscalixto8@gmail.com>",
@@ -21,6 +22,7 @@
     "@commitlint/config-conventional": "^17.0.3",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^8.0.1",
+    "jest": "^28.1.3",
     "nodemon": "^2.0.19"
   },
   "config": {
