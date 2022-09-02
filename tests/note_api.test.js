@@ -53,8 +53,6 @@ describe('viewing a specific note', () => {
   test('fails with statuscode 404 if note does not exist', async () => {
     const validNonexistingId = await helper.nonExistingId();
 
-    console.log(validNonexistingId);
-
     await api.get(`/api/notes/${validNonexistingId}`).expect(404);
   });
 
@@ -112,6 +110,25 @@ describe('deletion of a note', () => {
     const contents = notesAtEnd.map((r) => r.content);
 
     expect(contents).not.toContain(noteToDelete.content);
+  });
+});
+
+describe('update a note', () => {
+  test('succeeds with status code 200 if request is valid', async () => {
+    const notesAtStart = await helper.notesInDb();
+    const noteToBeUpdated = notesAtStart[1];
+
+    const updatedData = {
+      content: 'Browser can execute only Javascript',
+      important: false,
+    };
+
+    const updatedNote = await api
+      .put(`/api/notes/${noteToBeUpdated.id}`)
+      .send(updatedData)
+      .expect(200);
+
+    expect(updatedNote.body.important).toBe(updatedData.important);
   });
 });
 
