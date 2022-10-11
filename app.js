@@ -9,6 +9,8 @@ const usersRouter = require('./controllers/users')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
 
 logger.info('connecting to', config.MONGODB_URI)
 
@@ -28,6 +30,8 @@ app.use(middleware.requestLogger)
 app.use('/api/notes', notesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
